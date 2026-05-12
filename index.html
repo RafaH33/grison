@@ -1,23 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Grison — Branding & Web Design</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&display=swap"
+    rel="stylesheet" />
   <style>
-    :root { --primary: #355872; --mid: #7AAACE; --light: #9CD5FF; --bg: #EEF4FA; }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    :root {
+      --primary: #355872;
+      --mid: #7AAACE;
+      --light: #9CD5FF;
+      --bg: #EEF4FA;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html,
+    body {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
 
     body {
       font-family: 'DM Sans', sans-serif;
       color: #1C3A50;
       background: #fff;
-      overflow-x: hidden;
     }
 
     /* ── Crop container for giant display text ── */
@@ -27,6 +50,7 @@
       justify-content: center;
       align-items: flex-start;
     }
+
     .crop-text {
       white-space: nowrap;
       flex-shrink: 0;
@@ -56,43 +80,64 @@
       transition: color 0.15s;
       letter-spacing: -0.01em;
     }
-    .nav-link:hover { color: #355872; }
+
+    .nav-link:hover {
+      color: #355872;
+    }
 
     /* ── Liquid Glass Buttons ── */
 
     /* On light backgrounds (white/EEF4FA sections) */
     .btn-orange {
       display: inline-block;
-      background: rgba(53, 88, 114, 0.09);
+      position: relative;
+      overflow: hidden;
+      background: rgba(53, 88, 114, 0.07);
       backdrop-filter: blur(20px) saturate(160%);
       -webkit-backdrop-filter: blur(20px) saturate(160%);
       color: #1C3A50;
       padding: 11px 26px;
       border-radius: 100px;
-      border: 1px solid rgba(53, 88, 114, 0.18);
+      border: 1px solid rgba(53, 88, 114, 0.14);
       font-size: 14px;
       font-weight: 600;
       text-decoration: none;
       letter-spacing: -0.01em;
       cursor: pointer;
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.70),
-        inset 0 -1px 0 rgba(53,88,114,0.06),
-        0 2px 12px rgba(53,88,114,0.10);
+        inset 0 2px 0 rgba(255, 255, 255, 0.90),
+        inset 0 -1px 0 rgba(53, 88, 114, 0.07),
+        0 4px 18px rgba(53, 88, 114, 0.12),
+        0 1px 3px rgba(0, 0, 0, 0.05);
       transition: box-shadow 0.25s ease, transform 0.2s ease, background 0.25s ease;
     }
+
+    .btn-orange::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 8%;
+      right: 8%;
+      height: 52%;
+      background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.22) 55%, transparent 100%);
+      pointer-events: none;
+    }
+
     .btn-orange:hover {
-      background: rgba(53, 88, 114, 0.14);
+      background: rgba(53, 88, 114, 0.11);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.80),
-        inset 0 -1px 0 rgba(53,88,114,0.08),
-        0 6px 24px rgba(53,88,114,0.18);
+        inset 0 2px 0 rgba(255, 255, 255, 0.90),
+        inset 0 -1px 0 rgba(53, 88, 114, 0.08),
+        0 8px 28px rgba(53, 88, 114, 0.18),
+        0 1px 3px rgba(0, 0, 0, 0.06);
       transform: translateY(-1px);
     }
 
     /* On dark/navy backgrounds */
     .btn-white {
       display: inline-block;
+      position: relative;
+      overflow: hidden;
       background: rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(20px) saturate(160%);
       -webkit-backdrop-filter: blur(20px) saturate(160%);
@@ -106,18 +151,60 @@
       letter-spacing: -0.01em;
       cursor: pointer;
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.35),
-        inset 0 -1px 0 rgba(0,0,0,0.08),
-        0 4px 20px rgba(0,0,0,0.20);
+        inset 0 2px 0 rgba(255, 255, 255, 0.42),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.10),
+        0 6px 24px rgba(0, 0, 0, 0.22);
       transition: box-shadow 0.25s ease, transform 0.2s ease, background 0.25s ease;
     }
+
+    .btn-white::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 8%;
+      right: 8%;
+      height: 52%;
+      background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.10) 55%, transparent 100%);
+      pointer-events: none;
+    }
+
     .btn-white:hover {
       background: rgba(255, 255, 255, 0.20);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.50),
-        inset 0 -1px 0 rgba(0,0,0,0.06),
-        0 8px 32px rgba(0,0,0,0.25);
+        inset 0 2px 0 rgba(255, 255, 255, 0.52),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.08),
+        0 10px 36px rgba(0, 0, 0, 0.28);
       transform: translateY(-1px);
+    }
+
+    /* ── Skill pill (About Me section) ── */
+    .skill-pill {
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: rgba(53, 88, 114, 0.07);
+      border: 1px solid rgba(53, 88, 114, 0.14);
+      border-radius: 100px;
+      padding: 7px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1C3A50;
+      box-shadow:
+        inset 0 2px 0 rgba(255, 255, 255, 0.90),
+        inset 0 -1px 0 rgba(53, 88, 114, 0.07),
+        0 2px 8px rgba(53, 88, 114, 0.08);
+    }
+
+    .skill-pill::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 8%;
+      right: 8%;
+      height: 52%;
+      background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.22) 55%, transparent 100%);
+      pointer-events: none;
     }
 
     /* ── Service row ── */
@@ -133,22 +220,29 @@
       line-height: 1;
       cursor: default;
     }
-    .svc-row:last-child { border-bottom: 1.5px solid #355872; }
+
+    .svc-row:last-child {
+      border-bottom: 1.5px solid #355872;
+    }
 
     /* ── Badge circle ── */
     .badge {
-      width: 112px; height: 112px;
+      width: 112px;
+      height: 112px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(16px) saturate(150%);
       -webkit-backdrop-filter: blur(16px) saturate(150%);
       border: 1px solid rgba(156, 213, 255, 0.30);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.25),
-        0 4px 20px rgba(0,0,0,0.15);
-      display: flex; align-items: center; justify-content: center;
+        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        0 4px 20px rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      font-size: 12px; font-weight: 700;
+      font-size: 12px;
+      font-weight: 700;
       color: #9CD5FF;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -160,35 +254,42 @@
     /* ── Glass Contact Card ── */
     .glass-card {
       position: relative;
-      background: rgba(122,170,206,0.07);
+      background: rgba(122, 170, 206, 0.07);
       backdrop-filter: blur(28px) saturate(180%);
       -webkit-backdrop-filter: blur(28px) saturate(180%);
-      border: 1px solid rgba(122,170,206,0.22);
+      border: 1px solid rgba(122, 170, 206, 0.22);
       border-radius: 24px;
       padding: 36px 32px 32px;
       overflow: hidden;
       box-shadow:
-        0 8px 40px rgba(53,88,114,0.10),
-        inset 0 1px 0 rgba(255,255,255,0.70);
+        0 8px 40px rgba(53, 88, 114, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.70);
     }
+
     /* Small precise light glare — top-left corner only */
     .glass-card::before {
       content: '';
       position: absolute;
-      top: -20px; left: -16px;
-      width: 130px; height: 100px;
-      background: radial-gradient(ellipse at 40% 30%, rgba(156,213,255,0.55) 0%, rgba(122,170,206,0.15) 45%, transparent 70%);
+      top: -20px;
+      left: -16px;
+      width: 130px;
+      height: 100px;
+      background: radial-gradient(ellipse at 40% 30%, rgba(156, 213, 255, 0.55) 0%, rgba(122, 170, 206, 0.15) 45%, transparent 70%);
       pointer-events: none;
     }
+
     /* Top edge shimmer */
     .glass-card::after {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 1px;
-      background: linear-gradient(90deg, rgba(255,255,255,0.90) 0%, rgba(255,255,255,0.30) 40%, transparent 70%);
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.30) 40%, transparent 70%);
       pointer-events: none;
     }
+
     .glass-label {
       font-size: 11px;
       font-weight: 600;
@@ -197,10 +298,11 @@
       text-transform: uppercase;
       margin-bottom: 6px;
     }
+
     .glass-input {
       width: 100%;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(122,170,206,0.25);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(122, 170, 206, 0.25);
       border-radius: 12px;
       padding: 13px 16px;
       font-size: 14px;
@@ -210,25 +312,34 @@
       transition: border-color 0.2s, background 0.2s;
       resize: none;
     }
-    .glass-input::placeholder { color: rgba(53,88,114,0.38); }
-    .glass-input:focus {
-      border-color: rgba(122,170,206,0.65);
-      background: rgba(255,255,255,0.18);
+
+    .glass-input::placeholder {
+      color: rgba(53, 88, 114, 0.38);
     }
+
+    .glass-input:focus {
+      border-color: rgba(122, 170, 206, 0.65);
+      background: rgba(255, 255, 255, 0.18);
+    }
+
     .glass-submit {
-      width: 44px; height: 44px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background: #7AAACE;
       border: none;
       cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
-      box-shadow: 0 4px 16px rgba(122,170,206,0.40), inset 0 1px 0 rgba(255,255,255,0.40);
+      box-shadow: 0 4px 16px rgba(122, 170, 206, 0.40), inset 0 1px 0 rgba(255, 255, 255, 0.40);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+
     .glass-submit:hover {
       transform: scale(1.08);
-      box-shadow: 0 6px 24px rgba(122,170,206,0.55), inset 0 1px 0 rgba(255,255,255,0.45);
+      box-shadow: 0 6px 24px rgba(122, 170, 206, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.45);
     }
 
     /* ── Portfolio link buttons ── */
@@ -239,66 +350,77 @@
       justify-content: space-between;
       gap: 20px;
       padding: 28px 28px 24px;
-      background: rgba(53,88,114,0.04);
+      background: rgba(53, 88, 114, 0.04);
       backdrop-filter: blur(20px) saturate(160%);
       -webkit-backdrop-filter: blur(20px) saturate(160%);
-      border: 1px solid rgba(53,88,114,0.12);
+      border: 1px solid rgba(53, 88, 114, 0.12);
       border-radius: 20px;
       text-decoration: none;
       position: relative;
       overflow: hidden;
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.80),
-        0 2px 16px rgba(53,88,114,0.07);
+        inset 0 1px 0 rgba(255, 255, 255, 0.80),
+        0 2px 16px rgba(53, 88, 114, 0.07);
       transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     }
+
     .port-link::before {
       content: '';
       position: absolute;
-      top: -20px; left: -16px;
-      width: 110px; height: 80px;
-      background: radial-gradient(ellipse, rgba(122,170,206,0.18) 0%, transparent 70%);
+      top: -20px;
+      left: -16px;
+      width: 110px;
+      height: 80px;
+      background: radial-gradient(ellipse, rgba(122, 170, 206, 0.18) 0%, transparent 70%);
       pointer-events: none;
     }
+
     .port-link::after {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 1px;
-      background: linear-gradient(90deg, rgba(255,255,255,0.90) 0%, rgba(255,255,255,0.30) 50%, transparent 100%);
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.30) 50%, transparent 100%);
       pointer-events: none;
     }
+
     .port-link:hover {
-      background: rgba(53,88,114,0.08);
+      background: rgba(53, 88, 114, 0.08);
       transform: translateY(-4px);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.90),
-        0 12px 36px rgba(53,88,114,0.12);
+        inset 0 1px 0 rgba(255, 255, 255, 0.90),
+        0 12px 36px rgba(53, 88, 114, 0.12);
     }
+
     .port-behance {
       display: inline-flex;
       align-items: center;
       gap: 12px;
       padding: 20px 32px;
-      background: rgba(53,88,114,0.05);
+      background: rgba(53, 88, 114, 0.05);
       backdrop-filter: blur(20px) saturate(160%);
       -webkit-backdrop-filter: blur(20px) saturate(160%);
-      border: 1px solid rgba(53,88,114,0.14);
+      border: 1px solid rgba(53, 88, 114, 0.14);
       border-radius: 100px;
       text-decoration: none;
       position: relative;
       overflow: hidden;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.80), 0 2px 12px rgba(53,88,114,0.07);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.80), 0 2px 12px rgba(53, 88, 114, 0.07);
       transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
     }
+
     .port-behance:hover {
-      background: rgba(53,88,114,0.10);
+      background: rgba(53, 88, 114, 0.10);
       transform: translateY(-3px);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.90), 0 8px 28px rgba(53,88,114,0.12);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.90), 0 8px 28px rgba(53, 88, 114, 0.12);
     }
 
     /* ── Cycle word fade ── */
-    .cycle-fade { transition: opacity 0.25s ease; }
+    .cycle-fade {
+      transition: opacity 0.25s ease;
+    }
 
 
     /* ── Marquee ── */
@@ -306,17 +428,31 @@
       overflow: hidden;
       position: relative;
     }
+
     .marquee-track {
       display: flex;
       width: max-content;
       will-change: transform;
     }
-    .marquee-track.hero-speed   { animation: marquee 18s linear infinite; }
-    .marquee-track.footer-speed { animation: marquee 14s linear infinite; }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
+
+    .marquee-track.hero-speed {
+      animation: marquee 18s linear infinite;
     }
+
+    .marquee-track.footer-speed {
+      animation: marquee 14s linear infinite;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
     .marquee-item {
       white-space: nowrap;
       flex-shrink: 0;
@@ -326,358 +462,425 @@
       color: #355872;
       padding-right: 0.18em;
     }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 16px 24px !important;
+      }
+
+      nav .nav-tagline {
+        display: none !important;
+      }
+
+      /* Reduce side padding on all sections */
+      section,
+      #vanta-top section,
+      #about,
+      #portfolio,
+      #about-me,
+      #vanta-boring,
+      #contact {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+      }
+
+      /* Collapse 2-column grids to single column */
+      .resp-grid {
+        grid-template-columns: 1fr !important;
+        gap: 36px !important;
+      }
+
+      /* Stack portfolio web cards vertically */
+      .port-web-wrap {
+        flex-direction: column !important;
+      }
+
+      .port-link {
+        flex: none !important;
+        width: 100% !important;
+      }
+
+      /* Form appears above text on mobile */
+      .about-form {
+        order: -1;
+      }
+
+      /* Center the About text column on mobile */
+      #about .resp-grid>div:first-child {
+        text-align: center;
+      }
+
+      /* Keep service rows, glass cards, timeline left-aligned always */
+      .svc-row,
+      .glass-card,
+      .glass-input,
+      .glass-label,
+      .port-link,
+      .resp-timeline,
+      .resp-timeline * {
+        text-align: left !important;
+      }
+
+      /* Center skill pills row */
+      #about-me .resp-grid+div>div:first-child>div {
+        justify-content: center;
+      }
+
+      /* About Me section header centered */
+      #about-me>div>div:first-child {
+        text-align: center;
+      }
+
+      /* Footer */
+      footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
   </style>
 </head>
+
 <body>
 
-<!-- ════════════════════════════════════════
+  <!-- ════════════════════════════════════════
      NAV
 ════════════════════════════════════════ -->
-<nav style="padding: 18px 40px; display: flex; align-items: flex-start; justify-content: space-between; background: #fff;">
-  <div style="display: flex; align-items: flex-start; gap: 20px;">
-    <div style="display: flex; align-items: center;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="120" height="31" fill="none" viewBox="0 0 149 39">
-        <path fill="#355872" d="M139.164 12.512c1.344 0 2.432.176 3.264.528.864.32 1.536.768 2.016 1.344.512.608.88 1.392 1.104 2.352.256.96.384 2.256.384 3.888v12.912c0 1.344.224 2.256.672 2.736.48.48 1.28.72 2.4.72V38c-.608-.032-1.52-.064-2.736-.096a66.692 66.692 0 0 0-7.2 0c-1.152.032-2.032.064-2.64.096v-1.008c.96 0 1.632-.24 2.016-.72.384-.48.576-1.392.576-2.736V18.608c0-.8-.08-1.488-.24-2.064-.16-.608-.448-1.072-.864-1.392-.416-.352-1.04-.528-1.872-.528-.864 0-1.664.24-2.4.72-.704.48-1.28 1.152-1.728 2.016-.416.832-.624 1.776-.624 2.832v13.344c0 1.344.192 2.256.576 2.736.416.48 1.088.72 2.016.72V38c-.576-.032-1.424-.064-2.544-.096a58.096 58.096 0 0 0-3.408-.096c-1.216 0-2.464.032-3.744.096-1.28.032-2.24.064-2.88.096v-1.008c1.12 0 1.904-.24 2.352-.72.48-.48.72-1.392.72-2.736v-15.12c0-1.44-.224-2.496-.672-3.168-.416-.704-1.216-1.056-2.4-1.056v-1.008c1.024.096 2.016.144 2.976.144a45.25 45.25 0 0 0 3.744-.144 29.032 29.032 0 0 0 3.264-.528v4.32c.8-1.632 1.888-2.784 3.264-3.456 1.376-.672 2.912-1.008 4.608-1.008Zm-32.612 0c2.336 0 4.384.432 6.144 1.296 1.76.864 3.136 2.256 4.128 4.176.992 1.92 1.488 4.464 1.488 7.632 0 3.168-.496 5.712-1.488 7.632-.992 1.888-2.368 3.264-4.128 4.128-1.76.864-3.808 1.296-6.144 1.296-2.272 0-4.304-.432-6.096-1.296-1.76-.864-3.152-2.24-4.176-4.128-.992-1.92-1.488-4.464-1.488-7.632 0-3.168.496-5.712 1.488-7.632 1.024-1.92 2.416-3.312 4.176-4.176 1.792-.864 3.824-1.296 6.096-1.296Zm0 .96c-1.28 0-2.352.96-3.216 2.88-.864 1.888-1.296 4.976-1.296 9.264 0 4.288.432 7.376 1.296 9.264.864 1.888 1.936 2.832 3.216 2.832 1.312 0 2.384-.944 3.216-2.832.864-1.888 1.296-4.976 1.296-9.264 0-4.288-.432-7.376-1.296-9.264-.832-1.92-1.904-2.88-3.216-2.88Zm-25.052-.96c1.344 0 2.512.176 3.504.528 1.024.32 1.76.64 2.208.96 1.088.736 1.76.256 2.016-1.44h1.008c-.064.896-.112 2-.144 3.312-.032 1.28-.048 2.992-.048 5.136h-1.008a15.29 15.29 0 0 0-.912-3.504c-.448-1.152-1.104-2.096-1.968-2.832-.832-.736-1.92-1.104-3.264-1.104-.928 0-1.712.272-2.352.816-.64.512-.96 1.264-.96 2.256 0 .96.288 1.808.864 2.544.576.704 1.312 1.392 2.208 2.064.928.64 1.888 1.328 2.88 2.064 1.056.8 2.016 1.6 2.88 2.4.864.768 1.552 1.616 2.064 2.544.512.928.768 2.032.768 3.312 0 1.44-.416 2.704-1.248 3.792-.832 1.056-1.936 1.872-3.312 2.448-1.344.576-2.848.864-4.512.864-.96 0-1.824-.096-2.592-.288a8.914 8.914 0 0 1-1.92-.72 34.912 34.912 0 0 0-1.2-.528 9.432 9.432 0 0 0-1.008-.48c-.32-.096-.608.016-.864.336-.224.32-.4.768-.528 1.344h-1.008a94.37 94.37 0 0 0 .144-3.744c.032-1.472.048-3.424.048-5.856h1.008c.192 1.728.544 3.264 1.056 4.608.512 1.312 1.2 2.352 2.064 3.12.896.736 2.016 1.104 3.36 1.104.544 0 1.072-.112 1.584-.336.512-.224.928-.592 1.248-1.104.352-.512.528-1.168.528-1.968 0-1.408-.464-2.576-1.392-3.504-.896-.928-2.048-1.936-3.456-3.024-1.024-.832-2-1.648-2.928-2.448a12.333 12.333 0 0 1-2.208-2.688c-.576-.992-.864-2.112-.864-3.36 0-1.44.384-2.656 1.152-3.648.768-.992 1.776-1.728 3.024-2.208 1.28-.512 2.64-.768 4.08-.768ZM63.095.8c1.344 0 2.4.336 3.168 1.008.8.64 1.2 1.536 1.2 2.688 0 1.152-.4 2.064-1.2 2.736-.768.64-1.824.96-3.168.96s-2.416-.32-3.216-.96c-.768-.672-1.152-1.584-1.152-2.736 0-1.152.384-2.048 1.152-2.688C60.68 1.136 61.751.8 63.095.8Zm3.744 11.856v20.88c0 1.344.224 2.256.672 2.736.48.48 1.28.72 2.4.72V38c-.576-.032-1.472-.064-2.688-.096a70.316 70.316 0 0 0-3.696-.096c-1.248 0-2.512.032-3.792.096-1.28.032-2.24.064-2.88.096v-1.008c1.12 0 1.904-.24 2.352-.72.48-.48.72-1.392.72-2.736v-15.12c0-1.44-.224-2.496-.672-3.168-.416-.704-1.216-1.056-2.4-1.056v-1.008c1.024.096 2.016.144 2.976.144a45.25 45.25 0 0 0 3.744-.144 29.032 29.032 0 0 0 3.264-.528Zm-15.879-.144c1.025 0 1.857.224 2.497.672.64.416 1.104.96 1.392 1.632.32.672.48 1.376.48 2.112 0 1.184-.352 2.16-1.056 2.928-.672.736-1.568 1.104-2.688 1.104s-2-.272-2.64-.816c-.608-.576-.912-1.328-.912-2.256 0-.896.192-1.632.576-2.208a5.844 5.844 0 0 1 1.536-1.536 2.149 2.149 0 0 0-1.344.048c-.608.096-1.184.352-1.728.768a5.177 5.177 0 0 0-1.392 1.488 7.587 7.587 0 0 0-.912 1.92 6.204 6.204 0 0 0-.336 1.968v12.72c0 1.536.368 2.576 1.104 3.12.768.544 1.904.816 3.408.816V38a167.88 167.88 0 0 0-3.216-.096 97.373 97.373 0 0 0-4.416-.096c-1.28 0-2.576.032-3.888.096-1.312.032-2.304.064-2.976.096v-1.008c1.12 0 1.904-.24 2.352-.72.48-.48.72-1.392.72-2.736v-15.12c0-1.44-.224-2.496-.672-3.168-.416-.704-1.216-1.056-2.4-1.056v-1.008c1.024.096 2.016.144 2.976.144a45.25 45.25 0 0 0 3.744-.144 29.032 29.032 0 0 0 3.264-.528v4.464a8.771 8.771 0 0 1 1.536-2.352 6.834 6.834 0 0 1 2.208-1.632c.832-.416 1.76-.624 2.784-.624ZM17.44 3.344c2.176 0 3.952.304 5.328.912a16.876 16.876 0 0 1 3.696 2.208c.384.288.704.432.96.432.608 0 1.008-.96 1.2-2.88h1.104a140.035 140.035 0 0 0-.144 4.56c-.032 1.76-.048 4.112-.048 7.056h-1.104c-.224-1.92-.576-3.584-1.056-4.992-.448-1.44-1.296-2.672-2.544-3.696-.768-.736-1.728-1.312-2.88-1.728a9.72 9.72 0 0 0-3.408-.624c-1.76 0-3.264.464-4.512 1.392-1.248.896-2.272 2.128-3.072 3.696-.8 1.568-1.392 3.344-1.776 5.328a31.52 31.52 0 0 0-.576 6.096c0 5.76.784 9.968 2.352 12.624 1.6 2.656 3.888 3.984 6.864 3.984.768 0 1.44-.096 2.016-.288.576-.192 1.04-.416 1.392-.672.448-.32.752-.656.912-1.008.16-.384.24-.88.24-1.488v-4.704c0-1.472-.128-2.56-.384-3.264-.224-.736-.688-1.232-1.392-1.488s-1.728-.4-3.072-.432v-.96c.672.032 1.472.064 2.4.096.96 0 1.952.016 2.976.048h2.832c1.344 0 2.576-.016 3.696-.048s2.032-.064 2.736-.096v.96c-.608.032-1.072.144-1.392.336-.288.192-.496.576-.624 1.152-.096.576-.144 1.456-.144 2.64V38h-.96c-.032-.544-.16-1.136-.384-1.776-.192-.64-.528-.96-1.008-.96-.224 0-.528.064-.912.192-.352.096-.912.368-1.68.816A24.904 24.904 0 0 1 21.328 38a12.686 12.686 0 0 1-4.128.672c-3.712 0-6.848-.688-9.408-2.064-2.56-1.376-4.496-3.344-5.808-5.904-1.28-2.592-1.92-5.696-1.92-9.312 0-3.648.736-6.816 2.208-9.504C3.776 9.2 5.824 7.104 8.416 5.6c2.624-1.504 5.632-2.256 9.024-2.256Z"/>
-      </svg>
+  <nav
+    style="padding: 18px 40px; display: flex; align-items: flex-start; justify-content: space-between; background: #fff;">
+    <div style="display: flex; align-items: flex-start; gap: 20px;">
+      <div style="display: flex; align-items: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="120" height="31" fill="none" viewBox="0 0 149 39">
+          <path fill="#355872"
+            d="M139.164 12.512c1.344 0 2.432.176 3.264.528.864.32 1.536.768 2.016 1.344.512.608.88 1.392 1.104 2.352.256.96.384 2.256.384 3.888v12.912c0 1.344.224 2.256.672 2.736.48.48 1.28.72 2.4.72V38c-.608-.032-1.52-.064-2.736-.096a66.692 66.692 0 0 0-7.2 0c-1.152.032-2.032.064-2.64.096v-1.008c.96 0 1.632-.24 2.016-.72.384-.48.576-1.392.576-2.736V18.608c0-.8-.08-1.488-.24-2.064-.16-.608-.448-1.072-.864-1.392-.416-.352-1.04-.528-1.872-.528-.864 0-1.664.24-2.4.72-.704.48-1.28 1.152-1.728 2.016-.416.832-.624 1.776-.624 2.832v13.344c0 1.344.192 2.256.576 2.736.416.48 1.088.72 2.016.72V38c-.576-.032-1.424-.064-2.544-.096a58.096 58.096 0 0 0-3.408-.096c-1.216 0-2.464.032-3.744.096-1.28.032-2.24.064-2.88.096v-1.008c1.12 0 1.904-.24 2.352-.72.48-.48.72-1.392.72-2.736v-15.12c0-1.44-.224-2.496-.672-3.168-.416-.704-1.216-1.056-2.4-1.056v-1.008c1.024.096 2.016.144 2.976.144a45.25 45.25 0 0 0 3.744-.144 29.032 29.032 0 0 0 3.264-.528v4.32c.8-1.632 1.888-2.784 3.264-3.456 1.376-.672 2.912-1.008 4.608-1.008Zm-32.612 0c2.336 0 4.384.432 6.144 1.296 1.76.864 3.136 2.256 4.128 4.176.992 1.92 1.488 4.464 1.488 7.632 0 3.168-.496 5.712-1.488 7.632-.992 1.888-2.368 3.264-4.128 4.128-1.76.864-3.808 1.296-6.144 1.296-2.272 0-4.304-.432-6.096-1.296-1.76-.864-3.152-2.24-4.176-4.128-.992-1.92-1.488-4.464-1.488-7.632 0-3.168.496-5.712 1.488-7.632 1.024-1.92 2.416-3.312 4.176-4.176 1.792-.864 3.824-1.296 6.096-1.296Zm0 .96c-1.28 0-2.352.96-3.216 2.88-.864 1.888-1.296 4.976-1.296 9.264 0 4.288.432 7.376 1.296 9.264.864 1.888 1.936 2.832 3.216 2.832 1.312 0 2.384-.944 3.216-2.832.864-1.888 1.296-4.976 1.296-9.264 0-4.288-.432-7.376-1.296-9.264-.832-1.92-1.904-2.88-3.216-2.88Zm-25.052-.96c1.344 0 2.512.176 3.504.528 1.024.32 1.76.64 2.208.96 1.088.736 1.76.256 2.016-1.44h1.008c-.064.896-.112 2-.144 3.312-.032 1.28-.048 2.992-.048 5.136h-1.008a15.29 15.29 0 0 0-.912-3.504c-.448-1.152-1.104-2.096-1.968-2.832-.832-.736-1.92-1.104-3.264-1.104-.928 0-1.712.272-2.352.816-.64.512-.96 1.264-.96 2.256 0 .96.288 1.808.864 2.544.576.704 1.312 1.392 2.208 2.064.928.64 1.888 1.328 2.88 2.064 1.056.8 2.016 1.6 2.88 2.4.864.768 1.552 1.616 2.064 2.544.512.928.768 2.032.768 3.312 0 1.44-.416 2.704-1.248 3.792-.832 1.056-1.936 1.872-3.312 2.448-1.344.576-2.848.864-4.512.864-.96 0-1.824-.096-2.592-.288a8.914 8.914 0 0 1-1.92-.72 34.912 34.912 0 0 0-1.2-.528 9.432 9.432 0 0 0-1.008-.48c-.32-.096-.608.016-.864.336-.224.32-.4.768-.528 1.344h-1.008a94.37 94.37 0 0 0 .144-3.744c.032-1.472.048-3.424.048-5.856h1.008c.192 1.728.544 3.264 1.056 4.608.512 1.312 1.2 2.352 2.064 3.12.896.736 2.016 1.104 3.36 1.104.544 0 1.072-.112 1.584-.336.512-.224.928-.592 1.248-1.104.352-.512.528-1.168.528-1.968 0-1.408-.464-2.576-1.392-3.504-.896-.928-2.048-1.936-3.456-3.024-1.024-.832-2-1.648-2.928-2.448a12.333 12.333 0 0 1-2.208-2.688c-.576-.992-.864-2.112-.864-3.36 0-1.44.384-2.656 1.152-3.648.768-.992 1.776-1.728 3.024-2.208 1.28-.512 2.64-.768 4.08-.768ZM63.095.8c1.344 0 2.4.336 3.168 1.008.8.64 1.2 1.536 1.2 2.688 0 1.152-.4 2.064-1.2 2.736-.768.64-1.824.96-3.168.96s-2.416-.32-3.216-.96c-.768-.672-1.152-1.584-1.152-2.736 0-1.152.384-2.048 1.152-2.688C60.68 1.136 61.751.8 63.095.8Zm3.744 11.856v20.88c0 1.344.224 2.256.672 2.736.48.48 1.28.72 2.4.72V38c-.576-.032-1.472-.064-2.688-.096a70.316 70.316 0 0 0-3.696-.096c-1.248 0-2.512.032-3.792.096-1.28.032-2.24.064-2.88.096v-1.008c1.12 0 1.904-.24 2.352-.72.48-.48.72-1.392.72-2.736v-15.12c0-1.44-.224-2.496-.672-3.168-.416-.704-1.216-1.056-2.4-1.056v-1.008c1.024.096 2.016.144 2.976.144a45.25 45.25 0 0 0 3.744-.144 29.032 29.032 0 0 0 3.264-.528Zm-15.879-.144c1.025 0 1.857.224 2.497.672.64.416 1.104.96 1.392 1.632.32.672.48 1.376.48 2.112 0 1.184-.352 2.16-1.056 2.928-.672.736-1.568 1.104-2.688 1.104s-2-.272-2.64-.816c-.608-.576-.912-1.328-.912-2.256 0-.896.192-1.632.576-2.208a5.844 5.844 0 0 1 1.536-1.536 2.149 2.149 0 0 0-1.344.048c-.608.096-1.184.352-1.728.768a5.177 5.177 0 0 0-1.392 1.488 7.587 7.587 0 0 0-.912 1.92 6.204 6.204 0 0 0-.336 1.968v12.72c0 1.536.368 2.576 1.104 3.12.768.544 1.904.816 3.408.816V38a167.88 167.88 0 0 0-3.216-.096 97.373 97.373 0 0 0-4.416-.096c-1.28 0-2.576.032-3.888.096-1.312.032-2.304.064-2.976.096v-1.008c1.12 0 1.904-.24 2.352-.72.48-.48.72-1.392.72-2.736v-15.12c0-1.44-.224-2.496-.672-3.168-.416-.704-1.216-1.056-2.4-1.056v-1.008c1.024.096 2.016.144 2.976.144a45.25 45.25 0 0 0 3.744-.144 29.032 29.032 0 0 0 3.264-.528v4.464a8.771 8.771 0 0 1 1.536-2.352 6.834 6.834 0 0 1 2.208-1.632c.832-.416 1.76-.624 2.784-.624ZM17.44 3.344c2.176 0 3.952.304 5.328.912a16.876 16.876 0 0 1 3.696 2.208c.384.288.704.432.96.432.608 0 1.008-.96 1.2-2.88h1.104a140.035 140.035 0 0 0-.144 4.56c-.032 1.76-.048 4.112-.048 7.056h-1.104c-.224-1.92-.576-3.584-1.056-4.992-.448-1.44-1.296-2.672-2.544-3.696-.768-.736-1.728-1.312-2.88-1.728a9.72 9.72 0 0 0-3.408-.624c-1.76 0-3.264.464-4.512 1.392-1.248.896-2.272 2.128-3.072 3.696-.8 1.568-1.392 3.344-1.776 5.328a31.52 31.52 0 0 0-.576 6.096c0 5.76.784 9.968 2.352 12.624 1.6 2.656 3.888 3.984 6.864 3.984.768 0 1.44-.096 2.016-.288.576-.192 1.04-.416 1.392-.672.448-.32.752-.656.912-1.008.16-.384.24-.88.24-1.488v-4.704c0-1.472-.128-2.56-.384-3.264-.224-.736-.688-1.232-1.392-1.488s-1.728-.4-3.072-.432v-.96c.672.032 1.472.064 2.4.096.96 0 1.952.016 2.976.048h2.832c1.344 0 2.576-.016 3.696-.048s2.032-.064 2.736-.096v.96c-.608.032-1.072.144-1.392.336-.288.192-.496.576-.624 1.152-.096.576-.144 1.456-.144 2.64V38h-.96c-.032-.544-.16-1.136-.384-1.776-.192-.64-.528-.96-1.008-.96-.224 0-.528.064-.912.192-.352.096-.912.368-1.68.816A24.904 24.904 0 0 1 21.328 38a12.686 12.686 0 0 1-4.128.672c-3.712 0-6.848-.688-9.408-2.064-2.56-1.376-4.496-3.344-5.808-5.904-1.28-2.592-1.92-5.696-1.92-9.312 0-3.648.736-6.816 2.208-9.504C3.776 9.2 5.824 7.104 8.416 5.6c2.624-1.504 5.632-2.256 9.024-2.256Z" />
+        </svg>
+      </div>
+      <div class="nav-tagline"
+        style="font-size: 12px; color: #1C3A50; max-width: 210px; line-height: 1.55; margin-top: 2px; opacity: 0.75;">
+        Brand identity, web design & AI automation — from Sydney.
+      </div>
     </div>
-    <div style="font-size: 12px; color: #1C3A50; max-width: 210px; line-height: 1.55; margin-top: 2px; opacity: 0.75;">
-      Branding, identity and web design for businesses that deserve to stand out.
+    <div style="display: flex; gap: 28px; margin-top: 4px;">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
     </div>
-  </div>
-  <div style="display: flex; gap: 28px; margin-top: 4px;">
-    <a href="#about" class="nav-link">About</a>
-    <a href="#contact" class="nav-link">Contact</a>
-  </div>
-</nav>
+  </nav>
 
-<!-- ════════════════════════════════════════
+  <!-- ════════════════════════════════════════
      BOTANICAL WRAPPER — hero + statement + about share one unified SVG
 ════════════════════════════════════════ -->
-<div style="position: relative;">
+  <div style="position: relative;">
 
-  <!-- ════════════════════════════════════════
+    <!-- ════════════════════════════════════════
        HERO + STATEMENT — unified Vanta background
   ════════════════════════════════════════ -->
-  <div id="vanta-top" style="position: relative;">
+    <div id="vanta-top" style="position: relative;">
 
-    <section style="padding: 80px 40px; text-align: center; position: relative;">
-      <div style="position: relative; z-index: 2;">
-        <h2 style="font-size: clamp(24px, 3.2vw, 46px); font-weight: 700; color: #1C3A50; max-width: 660px; margin: 0 auto; line-height: 1.18;">
-          We design brands that speak for themselves — and build the digital presence to amplify them.
-        </h2>
-        <p style="margin-top: 24px; font-size: 14px; color: #2E6080; max-width: 400px; margin-left: auto; margin-right: auto; line-height: 1.75;">
-          Branding and digital are my craft. I put them to work creating identities, websites and UI/UX experiences that have real impact on the businesses I care about.
-        </p>
-      </div>
-    </section>
+      <section style="padding: 80px 40px; text-align: center; position: relative;">
+        <div style="position: relative; z-index: 2;">
+          <h2
+            style="font-size: clamp(24px, 3.2vw, 46px); font-weight: 700; color: #1C3A50; max-width: 660px; margin: 0 auto; line-height: 1.18;">
+            Brands built to mean something.
+          </h2>
+          <p
+            style="margin-top: 24px; font-size: 14px; color: #2E6080; max-width: 420px; margin-left: auto; margin-right: auto; line-height: 1.75;">
+            Brand identity, websites, and AI-powered workflows for businesses ready to look sharper, move faster, and
+            operate with more clarity.
+          </p>
+        </div>
+      </section>
 
-  <!-- ════════════════════════════════════════
+      <!-- ════════════════════════════════════════
        ABOUT — text + contact form
   ════════════════════════════════════════ -->
-  <section id="about" style="padding: 20px 48px 80px; position: relative;">
-  <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; z-index: 2;">
+      <section id="about" style="padding: 20px 48px 80px; position: relative;">
+        <div class="resp-grid"
+          style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; z-index: 2;">
 
-    <!-- Left text -->
-    <div>
-      <p style="font-size: clamp(17px, 1.8vw, 22px); font-weight: 700; color: #1C3A50; line-height: 1.35; margin-bottom: 18px;">
-        Rafael Grison is a <span style="color:#355872;">●</span> branding and web specialist who creates full identity systems, websites and UI/UX from scratch.
-      </p>
-      <p style="font-size: 14px; color: #2E6080; line-height: 1.8; margin-bottom: 28px;">
-        Every brand is planned and executed with mastery, alongside the owner from day one. The strategy, the look, the digital experience — everything is built with intention and built to last.
-      </p>
-      <a href="#contact" class="btn-orange">More about me</a>
-    </div>
+          <!-- Left text -->
+          <div>
+            <p
+              style="font-size: clamp(17px, 1.8vw, 22px); font-weight: 700; color: #1C3A50; line-height: 1.35; margin-bottom: 18px;">
+              Grison helps founders and growing businesses turn scattered ideas into a brand that feels focused — then
+              carries that clarity into a website, digital experience, and the systems behind it
+            </p>
+            <p style="font-size: 14px; color: #2E6080; line-height: 1.8; margin-bottom: 28px;">
+              A brand should not just look good. It should make decisions easier, conversations clearer, and your
+              business harder to ignore. From visual identity and messaging to website design and AI automation, every
+              piece is built to work together — intentionally, intelligently, and with a little edge.
+            </p>
+            <a href="#contact" class="btn-orange">More about me</a>
+          </div>
 
-    <!-- Right: Glass contact form -->
-    <div class="glass-card" style="position: relative; z-index: 2;">
-      <p style="font-size: 20px; font-weight: 800; color: #1C3A50; margin-bottom: 4px; position: relative; z-index: 1;">Send a message</p>
-      <p style="font-size: 13px; color: #6B9AB8; margin-bottom: 28px; position: relative; z-index: 1;">I'll get back to you within 24h.</p>
+          <!-- Right: Glass contact form -->
+          <div class="glass-card about-form" style="position: relative; z-index: 2;">
+            <p
+              style="font-size: 20px; font-weight: 800; color: #1C3A50; margin-bottom: 4px; position: relative; z-index: 1;">
+              Send a message</p>
+            <p style="font-size: 13px; color: #6B9AB8; margin-bottom: 28px; position: relative; z-index: 1;">I'll get
+              back to you within 24h.</p>
 
-      <form style="display: flex; flex-direction: column; gap: 16px; position: relative; z-index: 1;"
-            onsubmit="window.location='mailto:hello@rafaelgrison.com?subject=Message from '+encodeURIComponent(this.name_field.value)+'&body='+encodeURIComponent(this.message.value); return false;">
+            <form style="display: flex; flex-direction: column; gap: 16px; position: relative; z-index: 1;"
+              onsubmit="var msg='Hi Rafael! 👋\n\nMy name is '+this.name_field.value+'\nEmail: '+this.email.value+'\n\n'+this.message.value; window.open('https://wa.me/610410039785?text='+encodeURIComponent(msg),'_blank'); return false;">
 
-        <div>
-          <p class="glass-label">Name</p>
-          <input class="glass-input" type="text" name="name_field" placeholder="Your name" required/>
-        </div>
+              <div>
+                <p class="glass-label">Name</p>
+                <input class="glass-input" type="text" name="name_field" placeholder="Your name" required />
+              </div>
 
-        <div>
-          <p class="glass-label">Email</p>
-          <div style="display: flex; gap: 10px; align-items: center;">
-            <input class="glass-input" type="email" name="email" placeholder="your@email.com" required/>
-            <button type="submit" class="glass-submit" aria-label="Send">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"/>
-                <polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </button>
+              <div>
+                <p class="glass-label">Email</p>
+                <input class="glass-input" type="email" name="email" placeholder="your@email.com" required />
+              </div>
+
+              <div>
+                <p class="glass-label">Message</p>
+                <textarea class="glass-input" name="message" rows="4" placeholder="Tell me about your project…"
+                  required></textarea>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end;">
+                <button type="submit" aria-label="Send via WhatsApp"
+                  style="display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 22px 0 16px; border-radius: 100px; border: none; cursor: pointer; background: #25D366; box-shadow: 0 4px 18px rgba(37,211,102,0.35), inset 0 1px 0 rgba(255,255,255,0.30); transition: transform 0.2s ease, box-shadow 0.2s ease;"
+                  onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 8px 28px rgba(37,211,102,0.45),inset 0 1px 0 rgba(255,255,255,0.30)';"
+                  onmouseout="this.style.transform='';this.style.boxShadow='0 4px 18px rgba(37,211,102,0.35),inset 0 1px 0 rgba(255,255,255,0.30)';">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="#fff">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  <span style="font-size: 13px; font-weight: 600; color: #fff; white-space: nowrap;">Send via
+                    WhatsApp</span>
+                </button>
+              </div>
+
+            </form>
           </div>
         </div>
+      </section>
 
-        <div>
-          <p class="glass-label">Message</p>
-          <textarea class="glass-input" name="message" rows="3" placeholder="Tell me about your project…" required></textarea>
-        </div>
+    </div><!-- end vanta-top -->
 
-      </form>
-    </div>
-  </div>
-</section>
+  </div><!-- end botanical wrapper -->
 
-  </div><!-- end vanta-top -->
-
-</div><!-- end botanical wrapper -->
-
-<!-- ════════════════════════════════════════
+  <!-- ════════════════════════════════════════
      WHAT YOU WON'T GET — orange section
 ════════════════════════════════════════ -->
-<section id="vanta-boring" style="padding: 56px 48px 60px; overflow: hidden; position: relative;">
+  <section id="vanta-boring" style="padding: 56px 48px 60px; overflow: hidden; position: relative;">
 
-  <p style="position: relative; z-index: 2; font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 12px; opacity: 0.92;">What you won't get with me:</p>
+    <p
+      style="position: relative; z-index: 2; font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 12px; opacity: 0.92;">
+      Every project is built to be:</p>
 
-  <!-- Giant cycling word -->
-  <div style="position: relative; z-index: 2; line-height: 0.88;">
-    <div id="mainWord" class="cycle-fade"
-         style="font-size: clamp(60px, 13vw, 170px); font-weight: 900; color: #fff; white-space: nowrap;">
-      Generic
+    <!-- Giant cycling word -->
+    <div style="position: relative; z-index: 2; line-height: 0.88;">
+      <div id="mainWord" class="cycle-fade"
+        style="font-size: clamp(60px, 13vw, 170px); font-weight: 900; color: #fff; white-space: nowrap;">
+        Bold
+      </div>
     </div>
-  </div>
 
-  <!-- Body row -->
-  <div style="position: relative; z-index: 2; margin-top: 28px;">
-    <div style="max-width: 420px;">
-      <p style="font-size: 14px; color: #fff; opacity: 0.9; line-height: 1.8;">
-        Working with agencies can be expensive and impersonal. When you work with me, you get full attention, a transparent process, and a result crafted specifically for your business — never templated, never rushed.
-      </p>
+    <!-- Body row -->
+    <div style="position: relative; z-index: 2; margin-top: 28px;">
+      <div style="max-width: 420px;">
+        <p style="font-size: 14px; color: #fff; opacity: 0.9; line-height: 1.8;">
+          Every brand we build starts with intention — shaped by strategy, brought to life with craft, and powered
+          by the right technology. The result is something that genuinely belongs to you.
+        </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<script>
-  const words = ['Generic','Rushed','Boring','Copycat'];
-  let idx = 0;
-  setInterval(() => {
-    idx = (idx + 1) % words.length;
-    const m = document.getElementById('mainWord');
-    m.style.opacity = '0';
-    setTimeout(() => {
-      m.textContent = words[idx];
-      m.style.opacity = '1';
-    }, 260);
-  }, 2200);
-</script>
+  <script>
+    const words = ['Bold', 'Intentional', 'Original', 'Alive'];
+    let idx = 0;
+    setInterval(() => {
+      idx = (idx + 1) % words.length;
+      const m = document.getElementById('mainWord');
+      m.style.opacity = '0';
+      setTimeout(() => {
+        m.textContent = words[idx];
+        m.style.opacity = '1';
+      }, 260);
+    }, 2200);
+  </script>
 
-<!-- ════════════════════════════════════════
+  <!-- ════════════════════════════════════════
      SERVICES
 ════════════════════════════════════════ -->
-<section style="background: #fff; padding: 80px 48px 48px;">
-  <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
+  <section style="background: #fff; padding: 80px 48px 48px;">
+    <div class="resp-grid"
+      style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
 
-    <!-- Left: intro + service list + badge -->
-    <div>
-      <p style="font-size: clamp(17px, 1.9vw, 24px); font-weight: 500; color: #1C3A50; line-height: 1.4; margin-bottom: 44px;">
-        From the creation of a brand identity, through to full digital presence — website, UI and UX included.
-      </p>
-
+      <!-- Left: intro + service list + badge -->
       <div>
-        <div class="svc-row">Branding <span style="font-size: 0.55em;">→</span></div>
-        <div class="svc-row">Design <span style="font-size: 0.55em;">→</span></div>
-        <div class="svc-row">Web &amp; UI <span style="font-size: 0.55em;">→</span></div>
+        <p
+          style="font-size: clamp(17px, 1.9vw, 24px); font-weight: 500; color: #1C3A50; line-height: 1.4; margin-bottom: 44px;">
+          From brand identity to web presence to AI automation — everything your business needs, built together from day
+          one.
+        </p>
+
+        <div>
+          <div class="svc-row">Branding <span style="font-size: 0.55em;">→</span></div>
+          <div class="svc-row">Web &amp; UI <span style="font-size: 0.55em;">→</span></div>
+          <div class="svc-row">AI &amp; Automation <span style="font-size: 0.55em;">→</span></div>
+        </div>
+
       </div>
 
+      <!-- Right: description -->
+      <div style="padding-top: 4px;">
+        <p style="font-size: 14px; color: #2E6080; line-height: 1.85; margin-bottom: 18px;">
+          A brand only works when it knows what it stands for. Before the logo, the website or the systems, we find the
+          core of the business. The reason people should care.
+        </p>
+        <p style="font-size: 14px; color: #2E6080; line-height: 1.85; margin-bottom: 18px;">
+          From there, we shape the identity and digital experience around it. Clear, intentional and built to be
+          remembered.
+        </p>
+        <p style="font-size: 14px; color: #2E6080; line-height: 1.85;">
+          For businesses ready to move smarter, we bring AI into the process. Not as a trend. As a practical way to
+          remove friction, speed up the work and give the business more room to grow.
+        </p>
+      </div>
     </div>
+  </section>
 
-    <!-- Right: description -->
-    <div style="padding-top: 4px;">
-      <p style="font-size: 14px; color: #2E6080; line-height: 1.85; margin-bottom: 18px;">
-        Without a well-defined brand there is nothing solid to build on — confusing messaging, scattered visuals, unclear purpose. Most businesses don't realise what they're missing.
-      </p>
-      <p style="font-size: 14px; color: #2E6080; line-height: 1.85; margin-bottom: 18px;">
-        Through strategy sessions and workshops, I immerse myself in your world to articulate a distinct and coherent identity that truly reflects what you stand for.
-      </p>
-      <p style="font-size: 14px; color: #2E6080; line-height: 1.85;">
-        Brand elements are then applied across every touchpoint — website, product design, marketing and social — so your presence is consistent, powerful and impossible to ignore.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════
-     PORTFOLIO
+  <!-- ════════════════════════════════════════
+     HUMAN QUOTE
 ════════════════════════════════════════ -->
-<section id="portfolio" style="background: #fff; padding: 0 48px 72px;">
-  <div style="max-width: 1100px; margin: 0 auto;">
-
-    <div style="margin-bottom: 36px; padding-top: 0; border-top: 1px solid rgba(53,88,114,0.10); padding-top: 40px;">
-      <p style="font-size: 12px; font-weight: 700; color: #7AAACE; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 8px;">Selected Work</p>
-      <h2 style="font-size: clamp(24px, 2.8vw, 40px); font-weight: 900; color: #1C3A50; line-height: 1.1;">Portfolio</h2>
+  <section style="background: #fff; padding: 0 48px 80px;">
+    <div style="max-width: 1100px; margin: 0 auto; border-top: 1px solid rgba(53,88,114,0.10); padding-top: 56px;">
+      <p
+        style="font-size: clamp(20px, 2.8vw, 34px); font-weight: 500; color: #1C3A50; line-height: 1.45; max-width: 780px; letter-spacing: -0.01em;">
+        A strong brand gives you presence. The right AI gives you momentum. Together, they make your business <span
+          style="color: #7AAACE; font-weight: 700;">harder to copy, harder to ignore and much harder to catch.</span>
+      </p>
     </div>
+  </section>
 
-    <!-- Web -->
-    <div style="margin-bottom: 32px;">
-      <p style="font-size: 11px; font-weight: 700; color: #6B9AB8; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px;">Web</p>
-      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-
-        <a href="https://rafah33.github.io/madalozzoadvocacia/" target="_blank" class="port-link">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <span style="font-size: 11px; font-weight: 700; color: #7AAACE; letter-spacing: 0.1em;">01</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7AAACE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
-            </svg>
-          </div>
-          <div>
-            <p style="font-size: 22px; font-weight: 800; color: #1C3A50; line-height: 1.15; margin-bottom: 6px;">Advocacia<br>Conta Bloqueada</p>
-            <p style="font-size: 11px; color: #6B9AB8; letter-spacing: 0.04em;">rafah33.github.io/madalozzoadvocacia</p>
-          </div>
-        </a>
-
-        <a href="https://rafah33.github.io/chargeback-madalozzoadvocacia/" target="_blank" class="port-link">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <span style="font-size: 11px; font-weight: 700; color: #7AAACE; letter-spacing: 0.1em;">02</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7AAACE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
-            </svg>
-          </div>
-          <div>
-            <p style="font-size: 22px; font-weight: 800; color: #1C3A50; line-height: 1.15; margin-bottom: 6px;">Advocacia<br>Chargeback</p>
-            <p style="font-size: 11px; color: #6B9AB8; letter-spacing: 0.04em;">rafah33.github.io/chargeback-madalozzoadvocacia</p>
-          </div>
-        </a>
-
-      </div>
-    </div>
-
-    <!-- Branding -->
-    <div>
-      <p style="font-size: 11px; font-weight: 700; color: #6B9AB8; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px;">Branding</p>
-      <a href="https://www.behance.net/rafaelbert33cc" target="_blank" class="port-behance">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#7AAACE">
-          <path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 1.202.739 1.708 1.744 1.708.98 0 1.44-.498 1.573-1.068h2.44zm-5.737-9.757c-2.394 0-4.062 1.374-4.062 3.73H19.5c.144-2.285-1.13-3.73-1.511-3.73zM8.309 12.418c.653.124 1.176.38 1.589.76.414.382.62.946.62 1.69 0 1.768-1.325 2.698-3.76 2.698H3V7h3.43c1.124 0 1.952.19 2.484.572.532.38.798.96.798 1.73 0 .597-.155 1.07-.467 1.418-.31.348-.726.567-1.244.66l-.692.038zm-3.08-3.916v2.088h1.594c.41 0 .72-.08.926-.237.204-.158.306-.408.306-.75 0-.344-.104-.59-.31-.738-.205-.15-.516-.226-.934-.226H5.23zm1.784 6.096c.424 0 .749-.094.976-.283.228-.189.341-.46.341-.813 0-.36-.114-.633-.344-.817-.23-.185-.556-.277-.975-.277H5.23v2.19h1.784z"/>
-        </svg>
-        <span style="font-size: 15px; font-weight: 700; color: #1C3A50;">View all branding work on Behance</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7AAACE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
-        </svg>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════
+  <!-- ════════════════════════════════════════
      TEAM / CTA — orange
 ════════════════════════════════════════ -->
-<section id="contact" style="padding: 56px 48px; position: relative; overflow: hidden;">
-  <div style="position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap;">
-    <div>
-      <h3 style="font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 10px;">Let's build something</h3>
-      <p style="font-size: 14px; color: #fff; opacity: 0.88; max-width: 380px; line-height: 1.7;">
-        A specialist ready to work on brands that deserve to be seen. Every project is built alongside you — from strategy to the final pixel.
-      </p>
-    </div>
-    <div style="display: flex; align-items: center; gap: 24px;">
-      <div style="display: flex;">
-        <img src="https://placehold.co/52x52/fff/FF4501?text=RG"
-             style="width: 52px; height: 52px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5);"
-             alt="Rafael Grison"/>
+  <section id="contact" style="padding: 56px 48px; position: relative; overflow: hidden;">
+    <div
+      style="position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap;">
+      <div>
+        <h3 style="font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 10px;">Ready to build something that
+          lasts?</h3>
+        <p style="font-size: 14px; color: #fff; opacity: 0.88; max-width: 380px; line-height: 1.7;">
+          Your brand, your website, and the AI tools to scale it — built alongside you, from strategy to launch. Let's
+          start the conversation.
+        </p>
       </div>
-      <a href="mailto:hello@rafaelgrison.com" class="btn-white">Get in touch</a>
+      <div style="display: flex; align-items: center; gap: 24px;">
+        <div style="display: flex;">
+          <img src="https://placehold.co/52x52/fff/FF4501?text=RG"
+            style="width: 52px; height: 52px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5);"
+            alt="Rafael Grison" />
+        </div>
+        <a href="https://wa.me/610410039785" target="_blank"
+          style="display: inline-flex; align-items: center; gap: 7px; height: 44px; padding: 0 22px 0 16px; border-radius: 100px; background: #25D366; box-shadow: 0 4px 18px rgba(37,211,102,0.40), inset 0 1px 0 rgba(255,255,255,0.25); font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;"
+          onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 8px 28px rgba(37,211,102,0.50),inset 0 1px 0 rgba(255,255,255,0.25)';"
+          onmouseout="this.style.transform='';this.style.boxShadow='0 4px 18px rgba(37,211,102,0.40),inset 0 1px 0 rgba(255,255,255,0.25)';">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+          WhatsApp
+        </a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ════════════════════════════════════════
+  <!-- ════════════════════════════════════════
      FOOTER HERO TEXT
 ════════════════════════════════════════ -->
-<section style="background: #fff; padding-top: 56px; overflow: hidden;">
-  <div class="marquee-outer" style="height: 26vw; max-height: 340px; min-height: 120px;">
-    <div class="marquee-track footer-speed" style="font-size: 18vw;">
-      <span class="marquee-item">WHEN YOUR BRAND IS READY &nbsp;★&nbsp;</span>
-      <span class="marquee-item">WHEN YOUR BRAND IS READY &nbsp;★&nbsp;</span>
+  <section style="background: #fff; padding-top: 56px; overflow: hidden; width: 100%;">
+    <div class="marquee-outer"
+      style="height: 26vw; max-height: 340px; min-height: 120px; width: 100%; overflow: hidden;">
+      <div class="marquee-track footer-speed" style="font-size: 18vw;">
+        <span class="marquee-item">YOUR BRAND &nbsp;★&nbsp; YOUR WEBSITE &nbsp;★&nbsp; YOUR GROWTH &nbsp;★&nbsp;</span>
+        <span class="marquee-item">YOUR BRAND &nbsp;★&nbsp; YOUR WEBSITE &nbsp;★&nbsp; YOUR GROWTH &nbsp;★&nbsp;</span>
+      </div>
     </div>
-  </div>
-  <div style="padding: 44px 48px 32px;">
-    <p style="font-size: clamp(15px, 1.8vw, 20px); font-weight: 500; color: #1C3A50; margin-bottom: 22px;">
-      Let's work together to build a brand that earns attention.
-    </p>
-    <a href="mailto:hello@rafaelgrison.com" class="btn-orange">Email me</a>
-  </div>
-</section>
+  </section>
 
-<!-- ════════════════════════════════════════
+  <!-- ════════════════════════════════════════
      FOOTER BAR
 ════════════════════════════════════════ -->
-<footer style="background: #fff; padding: 18px 48px; border-top: 1px solid #eee;
+  <footer style="background: #fff; padding: 18px 48px; border-top: 1px solid #eee;
                display: flex; align-items: center; justify-content: space-between;">
-  <div style="display: flex; align-items: center; gap: 10px;">
-    <div style="width: 28px; height: 28px; border-radius: 50%; background: #355872;
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <div style="width: 28px; height: 28px; border-radius: 50%; background: #355872;
                 display: flex; align-items: center; justify-content: center;
                 font-size: 12px; font-weight: 800; color: #fff;">G</div>
-    <span style="font-size: 12px; color: #6B9AB8;">© Rafael Grison 2025. All rights reserved.</span>
-  </div>
-  <div style="display: flex; gap: 20px;">
-    <a href="#" style="font-size: 12px; color: #6B9AB8; text-decoration: none;">LinkedIn</a>
-    <a href="#" style="font-size: 12px; color: #6B9AB8; text-decoration: none;">Instagram</a>
-    <a href="#" style="font-size: 12px; color: #6B9AB8; text-decoration: none;">Behance</a>
-  </div>
-</footer>
+      <span style="font-size: 12px; color: #6B9AB8;">© Rafael Grison 2025. All rights reserved.</span>
+    </div>
+    <div style="display: flex; gap: 20px;">
+      <a href="#" style="font-size: 12px; color: #6B9AB8; text-decoration: none;">LinkedIn</a>
+      <a href="#" style="font-size: 12px; color: #6B9AB8; text-decoration: none;">Instagram</a>
+      <a href="#" style="font-size: 12px; color: #6B9AB8; text-decoration: none;">Behance</a>
+    </div>
+  </footer>
 
-<!-- Vanta.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.globe.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.dots.min.js"></script>
-<script>
-  window.addEventListener('load', function() {
-    // Globe — hero + statement + about unified zone
-    VANTA.GLOBE({
-      el: '#vanta-top',
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200,
-      minWidth: 200,
-      scale: 1.00,
-      scaleMobile: 1.00,
-      color: 0x7AAACE,
-      color2: 0x355872,
-      backgroundColor: 0xffffff,
-      size: 1.2
+  <!-- Vanta.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.globe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.dots.min.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      // Globe — hero + statement + about unified zone
+      VANTA.GLOBE({
+        el: '#vanta-top',
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200,
+        minWidth: 200,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0x7AAACE,
+        color2: 0x355872,
+        backgroundColor: 0xffffff,
+        size: 1.2
+      });
+      // Navy sections
+      VANTA.DOTS({
+        el: '#vanta-boring',
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200,
+        minWidth: 200,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        showLines: false,
+        color: 0x9CD5FF,
+        color2: 0x7AAACE,
+        backgroundColor: 0x355872,
+        size: 3.5,
+        spacing: 32
+      });
+      VANTA.DOTS({
+        el: '#contact',
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200,
+        minWidth: 200,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        showLines: false,
+        color: 0x9CD5FF,
+        color2: 0x7AAACE,
+        backgroundColor: 0x355872,
+        size: 3.5,
+        spacing: 32
+      });
     });
-    // Navy sections
-    VANTA.DOTS({
-      el: '#vanta-boring',
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200,
-      minWidth: 200,
-      scale: 1.00,
-      scaleMobile: 1.00,
-      showLines: false,
-      color: 0x9CD5FF,
-      color2: 0x7AAACE,
-      backgroundColor: 0x355872,
-      size: 3.5,
-      spacing: 32
-    });
-    VANTA.DOTS({
-      el: '#contact',
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200,
-      minWidth: 200,
-      scale: 1.00,
-      scaleMobile: 1.00,
-      showLines: false,
-      color: 0x9CD5FF,
-      color2: 0x7AAACE,
-      backgroundColor: 0x355872,
-      size: 3.5,
-      spacing: 32
-    });
-  });
-</script>
+  </script>
 
 </body>
+
 </html>
