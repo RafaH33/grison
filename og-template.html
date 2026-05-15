@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap');
+
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    font-family: 'DM Sans', sans-serif;
+    background: #1C3A50;
+    position: relative;
+  }
+
+  .bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #1C3A50 0%, #2E5070 40%, #355872 70%, #1a3348 100%);
+  }
+
+  /* Decorative circles */
+  .circle-1 {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(154,213,255,0.12) 0%, transparent 70%);
+    top: -120px;
+    right: -80px;
+  }
+  .circle-2 {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(122,170,206,0.10) 0%, transparent 70%);
+    bottom: -60px;
+    left: 60px;
+  }
+  .circle-3 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(154,213,255,0.15);
+    top: 60px;
+    right: 200px;
+  }
+  .circle-4 {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 1px solid rgba(154,213,255,0.10);
+    top: 120px;
+    right: 260px;
+  }
+
+  /* Dot grid subtle */
+  .dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(154,213,255,0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .content {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 64px 80px;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #9CD5FF;
+    opacity: 0.85;
+    margin-bottom: 28px;
+  }
+
+  .logo {
+    font-size: 96px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+  }
+
+  .logo span {
+    color: #9CD5FF;
+  }
+
+  .tagline {
+    font-size: 22px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.4;
+    max-width: 520px;
+    margin-bottom: 48px;
+  }
+
+  .pills {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .pill {
+    padding: 8px 20px;
+    border-radius: 100px;
+    border: 1px solid rgba(154,213,255,0.3);
+    background: rgba(154,213,255,0.08);
+    font-size: 13px;
+    font-weight: 500;
+    color: #9CD5FF;
+    letter-spacing: 0.02em;
+  }
+
+  /* Right side accent line */
+  .accent-line {
+    position: absolute;
+    right: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, rgba(154,213,255,0.4), transparent);
+  }
+
+  .url {
+    position: absolute;
+    bottom: 40px;
+    right: 80px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(154,213,255,0.5);
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="dots"></div>
+  <div class="circle-1"></div>
+  <div class="circle-2"></div>
+  <div class="circle-3"></div>
+  <div class="circle-4"></div>
+  <div class="accent-line"></div>
+
+  <div class="content">
+    <div class="eyebrow">Brand Identity &nbsp;·&nbsp; Web Design &nbsp;·&nbsp; AI Automation</div>
+    <div class="logo">GRISON<span>.</span></div>
+    <div class="tagline">Brands built to mean something.<br>Websites built to perform.</div>
+    <div class="pills">
+      <div class="pill">Bold</div>
+      <div class="pill">Intentional</div>
+      <div class="pill">Original</div>
+      <div class="pill">Alive</div>
+    </div>
+  </div>
+
+  <div class="url">grisonstudio.com</div>
+</body>
+</html>
